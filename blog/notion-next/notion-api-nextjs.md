@@ -1,6 +1,8 @@
 ---
 title: Turn Airtable into a Scalable CMS with Sync Inc and Next.js
 
+excerpt: private file - admin access only
+
 status: private
 
 tags: tutorial, cms, nextjs, airtable, syncinc
