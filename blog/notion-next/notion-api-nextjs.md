@@ -1,11 +1,11 @@
 ---
-title: Turn Airtable into a Scalable CMS with Sync Inc and Next.js
+title: Notion API + Next.js
 
 excerpt: private file - admin access only
 
 status: private
 
-tags: tutorial, cms, nextjs, airtable, syncinc
+tags: private, notion, api, nextjs
 
 cover: ./images/000.png
 
