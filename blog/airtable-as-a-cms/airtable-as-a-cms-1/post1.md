@@ -16,6 +16,8 @@ series:
   total: 3
 
 published: 1623677752
+
+slug: airtable-as-a-cms-1
 ---
 
 # Turn Airtable into a Scalable CMS with Sync Inc. and Next.js

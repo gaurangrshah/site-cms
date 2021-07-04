@@ -16,6 +16,8 @@ series:
   total: 3
 
 published: 1625492152
+
+slug: airtable-as-a-cms-2
 ---
 
 In the [previous article](https://dev.to/gsdev/build-a-splash-page-with-next-js-using-airtable-as-a-cms-1o7l) of this series, we built a splash page using the `Airtable.js` package to query our data from an Airtable base. We also took a deep dive into what Airtable actually is and how you can use `Next.js` to help generate static pages directly from your Airtable data.
