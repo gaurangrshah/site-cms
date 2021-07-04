@@ -1,7 +1,22 @@
-# 
+---
+title: Turn Airtable into a Scalable CMS with Sync Inc and Next.js
 
-# Turn Airtable into a Scalable CMS with Sync Inc. and Next.js 
+status: published
 
+tags: tutorial, cms, nextjs, airtable, syncinc
+
+cover: ./images/000.png
+
+series:
+  title: Turn Airtable into a Scalable CMS with Sync Inc and Next.js
+  order: 1
+  cover: images/000.png
+  total: 3
+
+published: 1623677752
+---
+
+# Turn Airtable into a Scalable CMS with Sync Inc. and Next.js
 
 ## Introduction
 
@@ -10,7 +25,6 @@ Let's build a fully optimized landing page using [Airtable](https://airtable.com
 In this first post, we'll begin, with a general overview of Airtable and Next.js and why the combination makes an ideal solution for several real-world applications. You'll also learn how to configure an Airtable "[base](https://airtable.com/developers/scripting/api/base)" and integrate it with Next.js using [static site generation (SSG)](https://nextjs.org/docs/basic-features/pages#static-generation-recommended).
 
 In the rest of the series, you'll see how you can simplify the solution and scale using [Sync Inc](https://syncinc.so). Which provides a synchronized cloud-based Postgres instance so you can run raw SQL queries against your Airtable data.
-
 
 ### What We're Building
 
@@ -32,11 +46,9 @@ Later in the series, you'll learn how you can:
 - scale using a fully provisioned cloud Postgres database.
 - leverage the power and simplicity of raw SQL queries.
 
-
 ![006](images/006.png)
 
 > [Visit Splash Page Demo](https://preview.airtablecms.xyz/)
-
 
 ### What is Airtable?
 
@@ -46,7 +58,6 @@ Airtable is an online platform for managing and sharing relational data in an ea
 
 - Generous Free Tier
 - Powerful Automations
-
 
 ### What is Next.js?
 
@@ -70,19 +81,19 @@ Airtable is an online platform for managing and sharing relational data in an ea
 ## Resources
 
 - [Airtable Base](https://airtable.com/shr5ukdwDwP7UHfXH) - This is the Airtable database you'll be working from.
-- [Starter  Repo](https://github.com/gaurangrshah/next-airtable-splash) - You can use this repo to clone our starter and follow along.
+- [Starter Repo](https://github.com/gaurangrshah/next-airtable-splash) - You can use this repo to clone our starter and follow along.
 - [Finished Branch](https://github.com/gaurangrshah/next-airtable-splash/tree/post1) - Use this repo to compare your work if you run into any issues.
 - [CodeSandbox Starter](https://codesandbox.io/s/starter-9qdvp) - You can also follow along using this CodeSandbox starter project.
 - [Project Demo](https://preview.airtablecms.xyz/) - This is a working demo of the Splash page project from this post.
 
 ## Airtable Setup
 
-First, let's get an Airtable base set up. 
+First, let's get an Airtable base set up.
+
 1. [Create an airtable account](https://airtable.com/signup) or [sign into your airtable account](https://airtable.com/login).
 2. Then [click here to Clone the Airtable base](https://airtable.com/shr5ukdwDwP7UHfXH) you'll be using for this project.
 
 ![a001](images/a001.png)
-
 
 ### Airtable Credentials
 
@@ -120,7 +131,6 @@ You can find your `base-id` from Airtable's live documentation.
 
    ![a004-2426429](images/a004-2426429.png)
 
-
 3. You'll find your `base-id` listed right under the second paragraph in green:
 
    ![a007](images/a007-1.png)
@@ -129,14 +139,13 @@ You can find your `base-id` from Airtable's live documentation.
 
 Once you have your Airtable credentials, let's move on to setting up your Next.js application.
 
-
 ## Structuring Airtable as a CMS
 
 If this is your first time using Airtable then this section will get you up to speed on some of the terminology and concepts you'll need to proceed.
 
 The base you cloned is designed to be very flexible so you can always add fields to customize it once you're semi-familiar with how it functions.
 
-Inside your base, you will find several tables listed at the top of the screen, (`pages`, `sections`, `blocks`, `media`, and `seo` ). These tables help us arrange our data logically in a  way that resembles a spreadsheet, but functions like a relational database.
+Inside your base, you will find several tables listed at the top of the screen, (`pages`, `sections`, `blocks`, `media`, and `seo` ). These tables help us arrange our data logically in a way that resembles a spreadsheet, but functions like a relational database.
 
 ![011](images/011.png)
 
@@ -153,84 +162,87 @@ Airtable provides you with various [field types](https://support.airtable.com/hc
 - **Linked Records** - used to link a record from one table with another.
 
 > **NOTE**: Even though all of this may seem like a lot, we're actually just scratching the surface here with Airtable. Luckily they have some incredible documentation both for the [platform](https://support.airtable.com/hc/en-us?utm_source=bing&utm_medium=cpc&utm_extra5=kwd-79783727595813:loc-190&utm_extra2=392687868&utm_extra10=1276533657989087&creative=&device=c&cx=us&targetid=kwd-79783727595813:loc-190&campaignid=392687868&adgroupid=1276533657989087&utm_campaign=brand_creator&utm_content=bofu_freetrial&msclkid=1d547cbc4d87108fb16b1c04138b88ae) and for the [API](https://airtable.com/api?utm_source=bing&utm_medium=cpc&utm_extra5=kwd-78890375930822:loc-190&utm_extra2=392687867&utm_extra10=1262240006362370&creative=&device=c&cx=us&targetid=kwd-78890375930822:loc-190&campaignid=392687867&adgroupid=1262240006362370&utm_campaign=brand_creator&utm_content=bofu_freetrial&msclkid=ed5c7b63058c199f44931bdb5baa686a).
-> 
+>
 > And if you really want to dive deep, I came across [this article](https://blog.syncinc.so/the-complete-developers-guide-to-airtable) that covers just about everything you can do with Airtable as a developer.
 
 ### Tables
+
 We use Airtable's field types in our base to help organize our data, based on the type of values we want to accept for any given field. Let's take a deeper look at each field and the type of data it holds.
 
 ##### pages
 
-| field     | field type       | description                                                                                   |
-|-----------|------------------|-----------------------------------------------------------------------------------------------|
+| field       | field type       | description                                                                                   |
+| ----------- | ---------------- | --------------------------------------------------------------------------------------------- |
 | `title`     | single line text | represents the title for the current page and can be used to populate nav menus as needed.    |
-| `path`      | single line text | used to populate the `href` value when linking to a page.                                       |
+| `path`      | single line text | used to populate the `href` value when linking to a page.                                     |
 | `order`     | number           | used to control the order in which each page should be displayed (also useful for nav menus). |
 | `sectionId` | linked record    | used to link to related sections for each page.                                               |
 | `seoId`     | linked record    | used to link to SEO metadata for each page.                                                   |
+
 ##### sections
 
-| field   | field type       | description                                                                                  |
-|---------|------------------| -------------------------------------------------------------------------------------------- |
+| field     | field type       | description                                                                                  |
+| --------- | ---------------- | -------------------------------------------------------------------------------------------- |
 | `title`   | single line text | represents the title for the section (_only used for reference purposes_).                   |
 | `order`   | number           | used to control the order of each section (_on a per-page basis_).                           |
-| `type`    | single select    | used to control which component  the application will use to render each section.            |
+| `type`    | single select    | used to control which component the application will use to render each section.             |
 | `filter`  | multiple select  | used as a boolean modifier that is useful for conditionally rendering components or layouts. |
 | `blockId` | linked record    | used to link to related blocks for each section.                                             |
 | `pageId`  | linked record    | used to link to the page that will render this section.                                      |
+
 ##### blocks
 
-| field     | field type       | description                                                                          |
-|-----------|------------------| ------------------------------------------------------------------------------------ |
+| field       | field type       | description                                                                          |
+| ----------- | ---------------- | ------------------------------------------------------------------------------------ |
 | `title`     | single line text | title for each block, used as the heading element's content. (_i.e., h1, h2, h3..._) |
 | `lead`      | single line text | short text block that will be rendered above the heading tag in our application.     |
 | `excerpt`   | single line text | short text block that will be rendered below the heading tag in our application.     |
 | `content`   | long text        | long from content (_i.e., paragraph_) that will be rendered as a block of text.      |
 | `mediaId`   | linked record    | used to link to related media for each block.                                        |
 | `sectionId` | linked record    | used to link to the section that will render this block.                             |
+
 ##### media
 
-| field   | field type      |  description                                                                                        |
-|---------| ----------------| --------------------------------------------------------------------------------------------------- |
-| `title`   | single line text|  represents the title for each media item (_only used for reference purposes_).                     |
-| `url`     | attachment      |  holds a file attachement as an object from which we use the url property.                          |
-| `alt`     | single line text|  used to populate the alt tag for each image.                                                       |
-| `blockId` | linked record   |  used to link to the block that will render each media item.                                        |
-| `seoId`   | linked record   |  can be used to reference an image from the `seo` table to be used as the `og:image` for each page. |
+| field     | field type       | description                                                                                        |
+| --------- | ---------------- | -------------------------------------------------------------------------------------------------- |
+| `title`   | single line text | represents the title for each media item (_only used for reference purposes_).                     |
+| `url`     | attachment       | holds a file attachement as an object from which we use the url property.                          |
+| `alt`     | single line text | used to populate the alt tag for each image.                                                       |
+| `blockId` | linked record    | used to link to the block that will render each media item.                                        |
+| `seoId`   | linked record    | can be used to reference an image from the `seo` table to be used as the `og:image` for each page. |
+
 ##### seo
 
-| field       | field type       | description                                                             |
-|-------------|------------------|-------------------------------------------------------------------------|
+| field         | field type       | description                                                               |
+| ------------- | ---------------- | ------------------------------------------------------------------------- |
 | `title`       | single line text | used to populate the `title` tag for each page.                           |
 | `description` | single line text | used to populate the `description` tag.                                   |
 | `keywords`    | single line text | used to populate the `keywords` tag.                                      |
 | `sitename`    | linked record    | used to populate the `site_name` tag.                                     |
 | `url`         | linked record    | used to populate the `site_url` tag.                                      |
-| `pageId`      | linked record    | used to reference the page that each SEO record belongs to.             |
+| `pageId`      | linked record    | used to reference the page that each SEO record belongs to.               |
 | `mediaId`     | linked record    | used to link to related media to be used as the `og:image` for each page. |
-
 
 ### Relationships
 
-Since one of the pre-requisites of this post was an understanding of relational databases, we won't dive too deep into the following concept of relationships. 
+Since one of the pre-requisites of this post was an understanding of relational databases, we won't dive too deep into the following concept of relationships.
 
 ![001](images/001.png)
 
 > In the diagram above you can see each table along with each of its fields and corresponding field types. You can also get a rough idea about how some of the fields are used to link data from different tables together.
 
-At its core Airtable is a relational database. The platform abstracts away a lot of the relational complexity and provides an easy-to-use interface that resembles a spreadsheet instead. Under the hood, relational concepts such as the use of `primary` and `foreign` keys are implemented to link records of your Airtable base to one another across your different tables. 
+At its core Airtable is a relational database. The platform abstracts away a lot of the relational complexity and provides an easy-to-use interface that resembles a spreadsheet instead. Under the hood, relational concepts such as the use of `primary` and `foreign` keys are implemented to link records of your Airtable base to one another across your different tables.
 
 Airtable calls these types of fields `linked records`, but these types of records behave similarly to the way `foreign_keys` are implemented in relational databases.
 
 > If you're not familiar with these relational database terms, I advise taking a quick second to skim through the introduction of [this article](https://www.guru99.com/difference-between-primary-key-and-foreign-key.html).
-And also more about [linked records](https://support.airtable.com/hc/en-us/articles/360021678853-The-power-of-Airtable-s-linked-records) in Airtable.
+> And also more about [linked records](https://support.airtable.com/hc/en-us/articles/360021678853-The-power-of-Airtable-s-linked-records) in Airtable.
 
+In Airtable the first field in each table acts similar to a `primary_key`. Airtable calls these fields the `primary field`. In your Airtable base, the first field on each table is the `title` field which essentially functions as the primary reference to the record it represents.
 
-In Airtable the first field in each table acts similar to a `primary_key`. Airtable calls these fields the `primary field`.  In your Airtable base, the first field on each table is the `title` field which essentially functions as the primary reference to the record it represents.
+The contents of each `primary field` field get indexed by Airtable which means we can search for our records by their `title`.
 
- The contents of each `primary field` field get indexed by Airtable which means we can search for our records by their `title`. 
-
-> ☝️ **NOTE**:  It's good practice to make sure the field that is used as the `primary_key` for each table has a unique value, although Airtable does not enforce this constraint.  More about: [Airtable primary keys](https://support.airtable.com/hc/en-us/articles/202624179-The-primary-field)
+> ☝️ **NOTE**: It's good practice to make sure the field that is used as the `primary_key` for each table has a unique value, although Airtable does not enforce this constraint. More about: [Airtable primary keys](https://support.airtable.com/hc/en-us/articles/202624179-The-primary-field)
 
 **Naming Convention**
 
@@ -247,6 +259,7 @@ Let's dig a bit further at the difference between how data looks in the Airtable
 The API response snippet shown below for the `sectionId` field returns an array of ids. Each id in the array represents a `linked record`.
 
 > Airtable response for the `sectionId` field:
+>
 > ```
 > "sectionId": [ "recTiTyzYFdayHJs5", "recm1iacYCQPuIseY", "recnJxlc90m0VYWeu" ]
 > ```
@@ -254,10 +267,9 @@ The API response snippet shown below for the `sectionId` field returns an array 
 > But in the Airtable UI, these same `linked records` appear as the `sectionId`:
 > ![002](images/002.jpg)
 
-
 Ultimately, this behavior in the API makes sense. Matching and looking up IDs is better than working with ever changing strings.
 
-Relationships can sometimes be tricky to reason about, but we're not doing anything complex here. As long as you have a general understanding of the basics you should feel confident enough to proceed. 
+Relationships can sometimes be tricky to reason about, but we're not doing anything complex here. As long as you have a general understanding of the basics you should feel confident enough to proceed.
 
 ## Next.js Setup
 
@@ -273,7 +285,6 @@ Clone the [starter repo](https://github.com/gaurangrshah/next-airtable-splash) l
 > $ git clone https://github.com/gaurangrshah/next-airtable-splash
 > ```
 
-
 ### Add credentials
 
 Now add your Airtable credentials as environment variables to your local repository. With Next.js you can simply create a file called `.env.local` at the root of your project. Next.js adds this file to your `.gitignore` by default and securely injects the variables into your environment at build time. More about: [Next.js Environment Variables](https://nextjs.org/docs/basic-features/environment-variables#loading-environment-variables)
@@ -284,7 +295,6 @@ Now add your Airtable credentials as environment variables to your local reposit
 AIRTABLE_API_KEY={{YOUR_AIRTABLE_API_KEY_HERE}}
 AIRTABLE_BASE_ID={{YOUR_AIRTABLE_BASE_ID_HERE}}
 ```
-
 
 Now that you have your application credentials configured go ahead and start your development server to make sure everything is working for you:
 
@@ -299,8 +309,6 @@ Now navigate to `http://localhost:3000/` . You should see the welcome message sh
 And there you have it. Your Next.js application is now running locally and you've got your environment variables configured.
 
 The next thing you'll want to do is configure your Airtable base to work with your Next.js application, but before we get there, let's take a moment to go over the structure of your Airtable base and how it will work as a CMS.
-
-
 
 ## Integrate Airtable
 
@@ -410,12 +418,11 @@ Next.js supports several data fetching strategies out of the box. In this post, 
 
 `getStaticProps()` provides a way for you to query the file system or any external resources during the build process. This means its logic can be executed on the server at build time in your production environment and on each page load in your local development environment.`getStaticProps()` is an asynchronous function that can be exported from any top-level page component. Next.js will automatically execute this function at build time before generating the static page. More about: [getStaticProps()](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation)
 
-> ⚠️  In development, you can always trigger a re-fetch with `getStaticProps()` by refreshing the page, but in production, you'll have to redeploy the application either manually from your hosting console or with a [deploy hook](https://vercel.com/docs/more/deploy-hooks).
+> ⚠️ In development, you can always trigger a re-fetch with `getStaticProps()` by refreshing the page, but in production, you'll have to redeploy the application either manually from your hosting console or with a [deploy hook](https://vercel.com/docs/more/deploy-hooks).
 
 > ☝️ **NOTE:** Next.js offers two additional data fetching strategies, [incremental static regeneration](https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration) (ISR), and traditional [server-side rendering](https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) (SSR). Any of these features including static site generation (SSG) can be implemented on a per-page basis. This allows us as the developers to choose which strategy is right for each use case.
 
 > For more about each strategy, I highly recommend [this article](https://mechandansinha.github.io/learning-nextjs-in-lockdown.html).
-
 
 Now that you have an idea of what `getStaticProps()` can do, let's put it to work and use it to query data from your Airtable base.
 
@@ -488,6 +495,7 @@ const { getPage, getRecordById, getRelatedRecords } = await import(
 ```
 
 Then we query Airtable for the launch page data using the `getPage()` helper function.
+
 ```js
 // query inital data from airtable
 const [launch] = await getPage("launch");
@@ -497,11 +505,11 @@ const [launch] = await getPage("launch");
 
 > Which (amongst the rest of the data) returns an array of ids for the `seoId` field. In this case, the array contains a single id linking to the `seo` table and pointing to the record with the `title` "Uptime Monitoring". Take a look at the image below as a refresher for how `pages` table is related to the `seo` table.
 
-
 ![014](images/014.png)
 
-> **Recall:** 
+> **Recall:**
 > that the `title` field shown above in the UI is represented as an id in the API response. The API response automatically substitutes the `title` value in `linked records` with unique ids instead.
+
 ---
 
 We can use the `seoId` array to help us query Airtable once more for the related SEO record for your launch page.
@@ -554,17 +562,15 @@ export default function Home({ page }) {
 }
 ```
 
-
-
 Now that you understand how we're able to fetch data from Airtable with Next.js using `getStaticProps()`, let's take a look at how that data correlates to the structure of your application.
 
 ![016](images/016.png "016")
+
 > The diagram below illustrates how each of the fields from your SEO table can be mapped to the corresponding meta tag in your application's HTML markup.
 
 This allows you to make changes in your Airtable base and directly update the structure of your markup resembling the functionality of a CMS.
 
-> 
-> **⚠️  Remember**: In development you will see new updates from your Airtable base with each page refresh, but in production, you'll need to rebuild and deploy your application in order to see any changes take effect.
+> **⚠️ Remember**: In development you will see new updates from your Airtable base with each page refresh, but in production, you'll need to rebuild and deploy your application in order to see any changes take effect.
 
 Now that you have an idea of how we'll use the data from your Airtable base as a CMS to render out the initial structure of your application, we can turn our attention back to getting the rest of the related data you'll need to fully build out the Splash page.
 
@@ -572,7 +578,7 @@ We're going to do the same thing we did above to get the related SEO data, but w
 
 First, we'll need to query for all of the `sections` needed to render the `launch` page. Then we can iterate over each section to get the related `blocks` for each `section`. And while we're iterating, we'll need to do the same for any `media` image related to each `block`. We essentially return each responses - all while building up the final `page` object we'll use to render the application.
 
-All of this logic will be handled within `getStaticProps()`. Similar to the way we queried for the SEO metadata. 
+All of this logic will be handled within `getStaticProps()`. Similar to the way we queried for the SEO metadata.
 
 ```js
 // pages/index.js
@@ -645,6 +651,7 @@ export async function getStaticProps() {
   };
 }
 ```
+
 > ☝️ **NOTE**: that once again we rely on the array of ids we get back from each of the linked record fields to then request each related record by id.
 
 With this in place, you should now be seeing even more data being dumped onto your page as shown in the image below.
@@ -655,14 +662,13 @@ With this in place, you should now be seeing even more data being dumped onto yo
 
 Now that you already have all of your data dumped on the client-side of your application you can style and present it however you want to.
 
-For this project, the starter comes with several pre-fabricated components that you can use to render this data. Let's take a look at how these components fit together to make up the structure of your application UI. 
+For this project, the starter comes with several pre-fabricated components that you can use to render this data. Let's take a look at how these components fit together to make up the structure of your application UI.
 
 ![005](images/005.jpg)
 
 > As you can see from the diagram above, our index page renders the `Splash` component, which in turn is responsible for rendering each of the sections in your Splash page.
 
-
-Each `section` from your Airtable base maps to a component in your application. We use the `type` field to determine which component renders each section. The image below shows an example of the mapping between your Airtable fields and the markup used to render them with the Hero component.  
+Each `section` from your Airtable base maps to a component in your application. We use the `type` field to determine which component renders each section. The image below shows an example of the mapping between your Airtable fields and the markup used to render them with the Hero component.
 ![015](images/015.png)
 
 The first component your `Splash` component is responsible for rendering is the `Hero` component.
@@ -698,10 +704,10 @@ export const Hero = ({ data }) => {
 };
 ```
 
-The `Hero` component simply renders a 2 column responsive flexbox layout. If you'll look closely at the markup you'll see that the hero component only accepts the`lead`, `heading`, and `excerpt` fields from your `blocks` table. It is not templated to render a `content` field. It will also render the related media image as well. 
+The `Hero` component simply renders a 2 column responsive flexbox layout. If you'll look closely at the markup you'll see that the hero component only accepts the`lead`, `heading`, and `excerpt` fields from your `blocks` table. It is not templated to render a `content` field. It will also render the related media image as well.
 
 > You can take a look at the styles we use to achieve this layout in `styles/Hero.module.css`.
-> 
+>
 > **☝️ REMINDER**: All of the styles for each of the components included with the starter can be found in the `/styles` directory.
 
 **Next.js Image Support**
@@ -714,7 +720,7 @@ Next.js recently introduced some really powerful image optimizations with their 
 >
 > ```js
 > // next.config.js
-> 
+>
 > module.exports = {
 >   images: {
 >     domains: ["dl.airtable.com"],
@@ -726,7 +732,7 @@ Next.js recently introduced some really powerful image optimizations with their 
 >
 > **⚠️ NOTE**: Your local server will need to be restarted after any changes to your `next.config.js` file.
 
-Next, we have a `List` component that is used to render out a list of benefits with icons corresponding to each benefit. 
+Next, we have a `List` component that is used to render out a list of benefits with icons corresponding to each benefit.
 
 ```jsx
 // components/List.js
@@ -817,7 +823,8 @@ export const Cta = ({ data, filter = [] }) => {
 };
 ```
 
-Although you have a bit more logic in this component, it's still quite simple. 
+Although you have a bit more logic in this component, it's still quite simple.
+
 > The component uses the `filter` field as a modifier to conditionally render a form. This helps us keep the Cta component extendable and reusable with several variations that can be applied from your Airtable response.
 
 > For our use case the form simply prints the data out to the console, but you could just as easily send the data to a mailing list provider or other external resources.
@@ -940,7 +947,6 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 
 > </iframe>
 
-
 ## Summary
 
 That's it for the first part of the series. I imagine this was a lot to take in, but let's take a quick look at how far we've come in just the first part of our series.
@@ -948,12 +954,13 @@ That's it for the first part of the series. I imagine this was a lot to take in,
 So far you've learned how to implement a custom CMS for your Splash page using Airtable. You also got a close look at how Next.js gives you the ability to perform server-side operations even with static pages at build time making it a great choice for this use case. And we also covered how you can use Next.js for some really simple image optimization.
 
 ### Next Steps
+
 You've already accomplished a lot already, but I would advise opening up your Airtable base, and from the blocks table start to edit some of your content. You should be able to see your changes reflected in your application after each page load just like you would with any CMS.
 
-Next I'd suggest playing around with the application, and and adding a new section to it. Something like a "founder's message" seems like a good fit. 
+Next I'd suggest playing around with the application, and and adding a new section to it. Something like a "founder's message" seems like a good fit.
 
 In the next part of this series, we'll go even further, and take a look at how we can use [Sync Inc](https://syncinc.so/) to synchronize our Airtable base with a cloud Postgres instance. This not only gives your application enterprise-grade scalability but also opens your application up to tons of possibilities including the ability to query your Airtable data with the power and flexibility of raw SQL queries.
 
 So join us for the next installment and be sure to follow me on [twitter: @soham_asmi](https://sw.ink/Q2BJRE4ERM) to stay up to date with my latest posts and reach out to me with any feedback or questions.
 
-Until next the next one... 👋 ! 
+Until next the next one... 👋 !

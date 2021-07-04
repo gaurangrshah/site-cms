@@ -1,41 +1,41 @@
+---
+title: Turn Airtable into a Scalable CMS with Sync Inc and Next.js
+
+status: private
+
+tags: tutorial, cms, nextjs, airtable, syncinc
+
+cover: ./images/000.png
+
+published: 1625492152
+---
+
 # Notion API + Next.js
 
 [Getting Started](https://developers.notion.com/docs/getting-started)
-
-
 
 Create New [Integration](https://www.notion.so/my-integrations)
 
 ![001](https://cdn.jsdelivr.net/gh/gaurangrshah/_shots@master/scrnshots/001.png)
 
-- *Be sure to select the `internal integration`option.*
-
-
+- _Be sure to select the `internal integration`option._
 
 Create new page / database or share an existing one with the new integration![002](/Users/bunty/Downloads/002.png)
 
-	1. Click `Share` on the top right, 
-	2. then click `Invite` from the dropdown menu
-
-
+    1. Click `Share` on the top right,
+    2. then click `Invite` from the dropdown menu
 
 And then you can select the name of your integration from the list.
 
 ![003](/Users/bunty/Downloads/003.png)
 
-
-
 Lastly, click invite to complete access to the integration.
 
 ![004](/Users/bunty/Downloads/004.png)
 
-
-
-When successful you'll notice that your integration is listed with *can edit* access.
+When successful you'll notice that your integration is listed with _can edit_ access.
 
 ![005](/Users/bunty/Downloads/005.png)
-
-
 
 ```
 # .env.local
@@ -43,10 +43,6 @@ When successful you'll notice that your integration is listed with *can edit* ac
 NOTION_SECRET=
 NOTION_DATABSE_ID=
 ```
-
-
-
-
 
 ```js
 // /lib/notion.js
@@ -79,7 +75,10 @@ export const getPage = async (pageId) => {
 };
 
 export const getBlocks = async (blockId) => {
-  const { results } = await notion.blocks.children.list({ block_id: blockId, page_size: 10 });
+  const { results } = await notion.blocks.children.list({
+    block_id: blockId,
+    page_size: 10,
+  });
   return results;
 };
 
@@ -90,8 +89,6 @@ export const ndb = async (config = {}) =>
     ...config,
   });
 ```
-
-
 
 ```js
 // pages/api/notion/dbs.js
@@ -108,15 +105,12 @@ export default async function handler(req, res) {
     .status(403)
     .json({ error: { message: "sorry this action is not allowed." } });
 }
-
 ```
-
-
 
 ```js
 // pages/api/notion/pages/index.js
 
-import { getPages } from '@/lib/notion';
+import { getPages } from "@/lib/notion";
 
 export default async function handler(req, res) {
   if (req?.method === "GET") {
@@ -128,10 +122,7 @@ export default async function handler(req, res) {
     .status(403)
     .json({ error: { message: "sorry this action is not allowed." } });
 }
-
 ```
-
-
 
 ```js
 // pages/api/notion/pages/[id].js
@@ -150,8 +141,6 @@ export default async function handler(req, res) {
 }
 ```
 
-
-
 ```js
 // pages/api/notion/content/[id].js
 
@@ -167,6 +156,4 @@ export default async function handler(req, res) {
     .status(403)
     .json({ error: { message: "sorry this action is not allowed." } });
 }
-
 ```
-
