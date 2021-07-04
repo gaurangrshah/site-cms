@@ -7,7 +7,7 @@ status: private
 
 tags: private, notion, api, nextjs
 
-cover: ./images/000.png
+cover: null
 
 published: 1625492152
 ---
