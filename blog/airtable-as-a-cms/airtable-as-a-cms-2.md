@@ -7,12 +7,12 @@ status: published
 
 tags: tutorial, cms, nextjs, airtable, syncinc
 
-cover: images/000.png
+cover: images/post2-000.png
 
 series:
   title: Turn Airtable into a Scalable CMS with Sync Inc and Next.js
   order: 2
-  cover: images/000.png
+  cover: images/series-000.png
   total: 3
 
 published: 1625492152
@@ -72,35 +72,35 @@ Before we get started, you'll need
 
 [Sign up](https://app.syncinc.so/signup) for a `SyncInc!` account or [log in to your existing account](https://app.syncinc.so/login).
 
-![images/image001.png](images/image001.png)
+![images/image001.png](images/post2-image001.png)
 
 If this is your first time signing up then click the button labeled "**Let's go**" to continue, otherwise, you'll be redirected to your dashboard.
 
-![images/image002.png](images/image002.png)
+![images/image002.png](images/post2-image002.png)
 
-![images/image003.png](images/image003.png)
+![images/image003.png](images/post2-image003.png)
 
 For the next step, you'll need your `Airtable API key` from [here](https://airtable.com/account).
 
 > ☝️ If you haven't set up your Airtable account or haven't cloned the Airtable base used for this project - please complete the setup using the directions provided in the `Airtable Setup` section of the [first article](https://dev.to/gsdev/build-a-splash-page-with-next-js-using-airtable-as-a-cms-1o7l).
 
-![images/image004.png](images/image004.png)
+![images/image004.png](images/post2-image004.png)
 
 If you've successfully cloned the provided Airtable base, should see a base named "site" listed in your available bases.
 
-![images/image005.png](images/image005.png)
+![images/image005.png](images/post2-image005.png)
 
 Make sure that you toggle "_Sync all tables in this base_" on and select "_New Sync Inc database_".
 
-![images/image006.png](images/image006.png)
+![images/image006.png](images/post2-image006.png)
 
 You'll be given a quick on-boarding questionnaire select the option that fits best for you or just click "**Skip**" to continue.
 
-![images/image007.png](images/image007.png)
+![images/image007.png](images/post2-image007.png)
 
 After a few moments, your new synchronized database will be fully provisioned. Once the setup completes you'll be provided with your credentials.
 
-![images/image008.png](images/image008.png)
+![images/image008.png](images/post2-image008.png)
 
 ## Project Setup
 
@@ -132,7 +132,7 @@ yarn dev
 
 If all goes well you should see a page that looks similar to the one below.
 
-![image014](images/image014.png)
+![image014](images/post2-image014.png)
 
 Let's take a moment to familiarize yourself with this starter template. For the most part, this is a typical boilerplate `Next.js` application.
 
@@ -190,11 +190,11 @@ Next, you'll need to set up your environment variables to configure your `SyncIn
 
 From your `SyncInc` dashboard click the "**Connect**" button.
 
-![image011](images/image011.png)
+![image011](images/post2-image011.png)
 
 You'll need to fill in the corresponding values from the credentials tab of the `SyncInc` dashboard.
 
-![image008](images/image008.png)
+![image008](images/post2-image008.png)
 
 Create a new file called `env.local` at the root of your project and copy the variables below:
 
@@ -304,43 +304,43 @@ Once your download completes double click on the file and install the applicatio
 
 Once the installation completes open `TablePlus` and click the "**Create a new connection**" link at the bottom of the window.
 
-![image017](images/image017.png)
+![image017](images/post2-image017.png)
 
 Next click the "**Import from URL**" button.
 
-![image018](images/image018.png)
+![image018](images/post2-image018.png)
 
 Then inside the dialog enter your postgres connection URL and click the "**Import**" button
 
 > ☝️**NOTE:** You can find the connection URL in your `SyncInc` dashboard as shown below:
 >
-> ![image019](images/image019.png)
+> ![image019](images/post2-image019.png)
 
 Next you can name your new connection and then click the "**TEST**" button to test your connection. If successful you should see all of the fields from your connection configuration turn green.
 
-![image020](images/image020.png)
+![image020](images/post2-image020.png)
 
 Once your connection test passes, you can feel free to click the "**Connect**" button, this will open of the default application view.
 
-![image021](images/image021.png)
+![image021](images/post2-image021.png)
 
 You should see all of your tables from your Airtable base listed in the left sidebar. You can click on any one and browse through your data.
 
 But for now we simply want to run a quick query against our data. To do that click the "**Queries**" tab at the top fo the left sidebar.
 
-![image023](images/image023.png)
+![image023](images/post2-image023.png)
 
 Then right-click to create a new folder called "**syncinc**".
 
 Then right -click on the new "**syncinc**" folder and create a new file. The new file will open in its own window.
 
-![image022](images/image022.png)
+![image022](images/post2-image022.png)
 
 Rename the file, and then paste in the SQL query we constructed.
 
 You can the close the file and double-click on it from the sidebar. This will open the query in the editor.
 
-![image024](images/image024.png)
+![image024](images/post2-image024.png)
 
 Now you can simply click the button labeled "**Run Current**". You'll see the data returned almost instantly as shown above.
 
@@ -350,7 +350,7 @@ Now you can simply click the button labeled "**Run Current**". You'll see the da
 
 **ALSO NOTE:** If you look at the data closely you'll notice that your query returns one row for each `block` in your Airtable base.
 
-![image013](images/image013.png)
+![image013](images/post2-image013.png)
 
 Now that you know the query logic works let's take the query and create a reference to it so we can use it within our application.
 
@@ -495,7 +495,7 @@ export async function getStaticProps() {
 
 With this in place, you should now be able to see something that matches the image below where you're simply dumping all of the data to the screen to make sure you're able to view the data on the front-end of the application.
 
-![image015](images/image015.png)
+![image015](images/post2-image015.png)
 
 You probably noticed that we used a function called `removeNullValues()` in `getStaticProps()`. `removeNullValues()` is a helper function that was included in the starter. It actually uses another one of our helper functions `isEmpty()` to find and any empty, `null`, or `undefined` values from our data.
 

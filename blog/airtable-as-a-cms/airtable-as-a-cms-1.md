@@ -7,12 +7,12 @@ status: published
 
 tags: tutorial, cms, nextjs, airtable, syncinc
 
-cover: images/000.png
+cover: images/post1-000.png
 
 series:
   title: Turn Airtable into a Scalable CMS with Sync Inc and Next.js
   order: 1
-  cover: images/000.png
+  cover: series-000.png
   total: 3
 
 published: 1623677752
@@ -50,7 +50,7 @@ Later in the series, you'll learn how you can:
 - scale using a fully provisioned cloud Postgres database.
 - leverage the power and simplicity of raw SQL queries.
 
-![006](images/006.png)
+![006](images/post1-006.png)
 
 > [Visit Splash Page Demo](https://preview.airtablecms.xyz/)
 
@@ -97,7 +97,7 @@ First, let's get an Airtable base set up.
 1. [Create an airtable account](https://airtable.com/signup) or [sign into your airtable account](https://airtable.com/login).
 2. Then [click here to Clone the Airtable base](https://airtable.com/shr5ukdwDwP7UHfXH) you'll be using for this project.
 
-![a001](images/a001.png)
+![a001](images/post1-a001.png)
 
 ### Airtable Credentials
 
@@ -111,15 +111,15 @@ Let's start by generating your Airtable `API key`.
 
 1. Click on your user icon in the top-right-hand corner.
 
-   ![a002](images/a002.png)
+   ![a002](images/post1-a002.png)
 
 2. From the drop-down menu select the "Account" option.
 
-   ![a003](images/a003.png)
+   ![a003](images/post1-a003.png)
 
 3. Under "Account Overview", click the button labeled "Generate API key".
 
-   ![a004](images/a004.png)
+   ![a004](images/post1-a004.png)
 
 > ⚠️ _Keep this `API key` secure, you'll need it when you configure your Next.js application._
 
@@ -129,15 +129,15 @@ You can find your `base-id` from Airtable's live documentation.
 
 1. From your base, click the "Help" button on the top-right of your screen.
 
-   ![a005](images/a005.png)
+   ![a005](images/post1-a005.png)
 
 2. From the sidebar menu, click the link labeled "API documentation".
 
-   ![a004-2426429](images/a004-2426429.png)
+   ![a004-2426429](images/post1-a005a.png)
 
 3. You'll find your `base-id` listed right under the second paragraph in green:
 
-   ![a007](images/a007-1.png)
+   ![a007](images/post1-a007.png)
 
 > ☝️ Keep your `base-id` secure but available you'll need it to configure your Airtable base with your Next.js application.
 
@@ -151,7 +151,7 @@ The base you cloned is designed to be very flexible so you can always add fields
 
 Inside your base, you will find several tables listed at the top of the screen, (`pages`, `sections`, `blocks`, `media`, and `seo` ). These tables help us arrange our data logically in a way that resembles a spreadsheet, but functions like a relational database.
 
-![011](images/011.png)
+![011](images/post1-011.png)
 
 > As shown above, each **table in a base** consists of a collection of **rows** and each **row** represents an individual **record**. **Records** are a collection of **fields** that hold specific data about the object they represent. More about [Airtable structure](https://support.airtable.com/hc/en-us/articles/360021333094#table)
 
@@ -231,7 +231,7 @@ We use Airtable's field types in our base to help organize our data, based on th
 
 Since one of the pre-requisites of this post was an understanding of relational databases, we won't dive too deep into the following concept of relationships.
 
-![001](images/001.png)
+![001](images/post1-001.png)
 
 > In the diagram above you can see each table along with each of its fields and corresponding field types. You can also get a rough idea about how some of the fields are used to link data from different tables together.
 
@@ -269,7 +269,7 @@ The API response snippet shown below for the `sectionId` field returns an array 
 > ```
 
 > But in the Airtable UI, these same `linked records` appear as the `sectionId`:
-> ![002](images/002.jpg)
+> ![002](images/post1-002.jpg)
 
 Ultimately, this behavior in the API makes sense. Matching and looking up IDs is better than working with ever changing strings.
 
@@ -308,7 +308,7 @@ $ yarn dev
 
 Now navigate to `http://localhost:3000/` . You should see the welcome message shown below.
 
-![007](images/007.png)
+![007](images/post1-007.png)
 
 And there you have it. Your Next.js application is now running locally and you've got your environment variables configured.
 
@@ -318,7 +318,7 @@ The next thing you'll want to do is configure your Airtable base to work with yo
 
 Now, connect your Airtable base to your Next.js app. You already have `airtable.js` included as a dependency in the `package.json` file of your Next.js application.
 
-![008](images/008.png)
+![008](images/post1-008.png)
 
 So we can jump right in and begin by instantiating an instance of Airtable in our project.
 
@@ -418,7 +418,7 @@ Next.js supports several data fetching strategies out of the box. In this post, 
 
 ### Static Site Generation (SSG)
 
-![003](images/003.jpg)
+![003](images/post1-003.jpg)
 
 `getStaticProps()` provides a way for you to query the file system or any external resources during the build process. This means its logic can be executed on the server at build time in your production environment and on each page load in your local development environment.`getStaticProps()` is an asynchronous function that can be exported from any top-level page component. Next.js will automatically execute this function at build time before generating the static page. More about: [getStaticProps()](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation)
 
@@ -485,7 +485,7 @@ export default function Home({ page }) {
 
 As you can see, we're only fetching a subset of our data and dumping it directly onto the page just to make sure everything is wired up properly. You should see your data dumped to the page as shown below.
 
-![009](images/009.png)
+![009](images/post1-009.png)
 
 It may not seem like it, but a lot of our logic is being handled by `getStaticProps()` so let's go over it step by step.
 
@@ -509,7 +509,7 @@ const [launch] = await getPage("launch");
 
 > Which (amongst the rest of the data) returns an array of ids for the `seoId` field. In this case, the array contains a single id linking to the `seo` table and pointing to the record with the `title` "Uptime Monitoring". Take a look at the image below as a refresher for how `pages` table is related to the `seo` table.
 
-![014](images/014.png)
+![014](images/post1-014.png)
 
 > **Recall:**
 > that the `title` field shown above in the UI is represented as an id in the API response. The API response automatically substitutes the `title` value in `linked records` with unique ids instead.
@@ -568,7 +568,7 @@ export default function Home({ page }) {
 
 Now that you understand how we're able to fetch data from Airtable with Next.js using `getStaticProps()`, let's take a look at how that data correlates to the structure of your application.
 
-![016](images/016.png "016")
+![016](images/post1-016.png)
 
 > The diagram below illustrates how each of the fields from your SEO table can be mapped to the corresponding meta tag in your application's HTML markup.
 
@@ -660,7 +660,7 @@ export async function getStaticProps() {
 
 With this in place, you should now be seeing even more data being dumped onto your page as shown in the image below.
 
-![010](images/010.png)
+![010](images/post1-010.png)
 
 ## Rendering Data From Airtable
 
@@ -668,12 +668,12 @@ Now that you already have all of your data dumped on the client-side of your app
 
 For this project, the starter comes with several pre-fabricated components that you can use to render this data. Let's take a look at how these components fit together to make up the structure of your application UI.
 
-![005](images/005.jpg)
+![005](images/post1-005.jpg)
 
 > As you can see from the diagram above, our index page renders the `Splash` component, which in turn is responsible for rendering each of the sections in your Splash page.
 
 Each `section` from your Airtable base maps to a component in your application. We use the `type` field to determine which component renders each section. The image below shows an example of the mapping between your Airtable fields and the markup used to render them with the Hero component.
-![015](images/015.png)
+![015](images/post1-015.png)
 
 The first component your `Splash` component is responsible for rendering is the `Hero` component.
 
