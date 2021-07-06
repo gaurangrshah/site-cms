@@ -1,7 +1,7 @@
 ---
 title: Turn Airtable into a Scalable CMS with Sync Inc and Next.js
 
-excerpt: Over the course of this 3-part series, you'll work your way up to building a highly scalable landing page with an easy-to-use custom Airtable CMS.
+description: Over the course of this 3-part series, you'll work your way up to building a highly scalable landing page with an easy-to-use custom Airtable CMS.
 
 status: published
 

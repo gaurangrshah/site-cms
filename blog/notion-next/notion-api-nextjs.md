@@ -1,7 +1,7 @@
 ---
 title: Notion API + Next.js
 
-excerpt: private file - admin access only
+description: private file - admin access only
 
 status: private
 
