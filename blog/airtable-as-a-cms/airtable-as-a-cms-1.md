@@ -12,15 +12,13 @@ cover: images/post1-000.png
 series:
   title: Turn Airtable into a Scalable CMS with Sync Inc and Next.js
   order: 1
-  cover: series-000.png
+  cover: images/series-000.png
   total: 3
 
 published: 1623677752
 
 slug: airtable-as-a-cms-1
 ---
-
-# Turn Airtable into a Scalable CMS with Sync Inc. and Next.js
 
 ## Introduction
 

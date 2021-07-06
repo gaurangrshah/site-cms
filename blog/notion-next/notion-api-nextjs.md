@@ -12,8 +12,6 @@ cover: null
 published: 1625492152
 ---
 
-# Notion API + Next.js
-
 [Getting Started](https://developers.notion.com/docs/getting-started)
 
 Create New [Integration](https://www.notion.so/my-integrations)
