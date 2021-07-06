@@ -3,7 +3,7 @@ title: VSCode Extensions I can't live without!
 
 description: A list of VSCode extensions that I use on a daily basis.
 
-status: daraft
+status: draft
 
 tags: list, top10, vscode, vscode-extensions
 
