@@ -20,13 +20,13 @@ published: 1625492152
 slug: airtable-as-a-cms-2
 ---
 
-In the [previous article](https://dev.to/gsdev/build-a-splash-page-with-next-js-using-airtable-as-a-cms-1o7l) of this series, we built a splash page using the `Airtable.js` package to query our data from an Airtable base. We also took a deep dive into what Airtable actually is and how you can use `Next.js` to help generate static pages directly from your Airtable data.
+In the [previous article](https://www.gshahdev.com/blog/airtable-as-a-cms/airtable-as-a-cms-2) of this series, we built a splash page using the `Airtable.js` package to query our data from an Airtable base. We also took a deep dive into what Airtable actually is and how you can use `Next.js` to help generate static pages directly from your Airtable data.
 
-Although the [previous article](https://dev.to/gsdev/build-a-splash-page-with-next-js-using-airtable-as-a-cms-1o7l) _<u>is not a pre-requisite</u>_ for following along in this article, but if you've never worked with Airtable before I highly recommend starting there to get a better idea of how we're using Airtable.
+Although the [previous article](https://www.gshahdev.com/blog/airtable-as-a-cms/airtable-as-a-cms-2) _<u>is not a pre-requisite</u>_ for following along in this article, but if you've never worked with Airtable before I highly recommend starting there to get a better idea of how we're using Airtable.
 
 In this article, we'll take a step-by-step look at how to set up `SyncInc` and use it to synchronize your Airtable base with a fully provisioned cloud `Postgres` instance. We'll still be working with the same Airtable base, so in the end, you will end up with the same splash page. In contrast, you'll be able to see how `SyncInc` helps us simplify the logic required to achieve the same solution using the raw power of SQL to query your data from Airtable
 
-If you followed along with the [first article](https://dev.to/gsdev/build-a-splash-page-with-next-js-using-airtable-as-a-cms-1o7l) in this series, then you already know how cumbersome it can be to query Airtable directly. Even when using the `Airtable.js` package, there's a ton of boilerplate that is required just to get our data from Airtable. Using `SyncInc` we not only get a more scalable solution but also a more efficient and performant way to get data from Airtable to the front-end of our applications.
+If you followed along with the [first article](https://www.gshahdev.com/blog/airtable-as-a-cms/airtable-as-a-cms-2) in this series, then you already know how cumbersome it can be to query Airtable directly. Even when using the `Airtable.js` package, there's a ton of boilerplate that is required just to get our data from Airtable. Using `SyncInc` we not only get a more scalable solution but also a more efficient and performant way to get data from Airtable to the front-end of our applications.
 
 ## **What is SyncInc?**
 
@@ -66,7 +66,7 @@ Before we get started, you'll need
 - an Airtable account
 - you'll need to clone the Airtable base provided above in the `Resources` section. You'll also need your Airtable API key handy, which [can be found here](https://airtable.com/account).
 
-☝️ Once again, you can refer to the `Airtable Setup` section of the [last article](https://dev.to/gsdev/build-a-splash-page-with-next-js-using-airtable-as-a-cms-1o7l).
+☝️ Once again, you can refer to the `Airtable Setup` section of the [last article](https://www.gshahdev.com/blog/airtable-as-a-cms/airtable-as-a-cms-2).
 
 ## SyncInc Setup
 
@@ -82,7 +82,7 @@ If this is your first time signing up then click the button labeled "**Let's go*
 
 For the next step, you'll need your `Airtable API key` from [here](https://airtable.com/account).
 
-> ☝️ If you haven't set up your Airtable account or haven't cloned the Airtable base used for this project - please complete the setup using the directions provided in the `Airtable Setup` section of the [first article](https://dev.to/gsdev/build-a-splash-page-with-next-js-using-airtable-as-a-cms-1o7l).
+> ☝️ If you haven't set up your Airtable account or haven't cloned the Airtable base used for this project - please complete the setup using the directions provided in the `Airtable Setup` section of the [first article](https://www.gshahdev.com/blog/airtable-as-a-cms/airtable-as-a-cms-2).
 
 ![image004.png](https://cdn.jsdelivr.net/gh/gaurangrshah/site-cms@main/blog/airtable-as-a-cms/images/post2-image004.png)
 
@@ -174,7 +174,7 @@ You'll find that the starter also includes all of the styles and each of the com
 
 Next up we'll look at how to get our data into our application from Airtable. We'll start by using the [pg](https://www.npmjs.com/package/pg) package to connect with and query from our synchronized Postgres database that we generated with `Sync Inc`.
 
-In the [last article](https://dev.to/gsdev/build-a-splash-page-with-next-js-using-airtable-as-a-cms-1o7l), we used the `Airtable.js` package to help query our Airtable data, this time around we'll use the [pg](https://www.npmjs.com/package/pg) package to help do the same with our Postgres database. You should see a stark contrast in both the amount of boilerplate you no longer need and how we can simply all of the logic we implemented previously into a single SQL statement which will return all of the data we need.
+In the [last article](https://www.gshahdev.com/blog/airtable-as-a-cms/airtable-as-a-cms-2), we used the `Airtable.js` package to help query our Airtable data, this time around we'll use the [pg](https://www.npmjs.com/package/pg) package to help do the same with our Postgres database. You should see a stark contrast in both the amount of boilerplate you no longer need and how we can simply all of the logic we implemented previously into a single SQL statement which will return all of the data we need.
 
 Let's start by adding `pg` as a dependency by running the following command:
 
@@ -442,11 +442,11 @@ module.exports = {
 };
 ```
 
-That's it. That's all the logic we need to query all of our data from Airtable. You might recall from [the first article](https://dev.to/gsdev/build-a-splash-page-with-next-js-using-airtable-as-a-cms-1o7l), that it took a lot more work to query the same data using `Airtable.js`. This is the power of `Postgres` on full display with the help of `SyncInc`. As you can see we've significantly decreased the development time. And because we're dealing with `Postgres` we also have the full benefit of it's plugin eco-system and third-party utilities (like `TablePlus`).
+That's it. That's all the logic we need to query all of our data from Airtable. You might recall from [the first article](https://www.gshahdev.com/blog/airtable-as-a-cms/airtable-as-a-cms-2), that it took a lot more work to query the same data using `Airtable.js`. This is the power of `Postgres` on full display with the help of `SyncInc`. As you can see we've significantly decreased the development time. And because we're dealing with `Postgres` we also have the full benefit of it's plugin eco-system and third-party utilities (like `TablePlus`).
 
 Next, let's put our logic to work in our application by ensuring that `getSections()` is called asynchronously at build time using `getStaticProps()`.
 
-> ☝️ You might recall from [the last article](https://dev.to/gsdev/build-a-splash-page-with-next-js-using-airtable-as-a-cms-1o7l), that `getStaticProps()` will get called once at build-time for each top-level page in your application. So any logic we have within it will be run once during the build process. That data is then cached and used to generate the content for each of the static pages in your application. In our case, we just have a single page.
+> ☝️ You might recall from [the last article](https://www.gshahdev.com/blog/airtable-as-a-cms/airtable-as-a-cms-2), that `getStaticProps()` will get called once at build-time for each top-level page in your application. So any logic we have within it will be run once during the build process. That data is then cached and used to generate the content for each of the static pages in your application. In our case, we just have a single page.
 
 ```jsx
 // pages/index.js
