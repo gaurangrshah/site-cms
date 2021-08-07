@@ -9,7 +9,7 @@ tags: private, notion, api, nextjs
 
 cover: null
 
-published: 1625492152
+published: false
 ---
 
 [Getting Started](https://developers.notion.com/docs/getting-started)
