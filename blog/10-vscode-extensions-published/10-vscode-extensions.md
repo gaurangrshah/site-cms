@@ -7,7 +7,7 @@ status: published
 
 tags: list, top10, vscode, vscode-extensions
 
-cover: https://cdn.jsdelivr.net/gh/gaurangrshah/site-cms@main/blog/10-vscode-extensions/cover.jpeg
+cover: https://cdn.jsdelivr.net/gh/gaurangrshah/site-cms@main/blog/10-vscode-extensions/images/cover.jpeg
 
 published: 1625652000
 
