@@ -7,22 +7,20 @@ status: published
 
 tags: list, top10, vscode, vscode-extensions
 
-cover: https://cdn.jsdelivr.net/gh/gaurangrshah/site-cms@main/blog/10-vscode-extensions/images/cover.jpeg
+cover: https://cdn.jsdelivr.net/gh/gaurangrshah/site-cms@main/blog/10-vscode-extensions-published/images/cover.jpeg
 
 published: 1625652000
 
 slug: 10-vscode-extensions
 ---
 
-
-
 ## 1. Advanced New File
 
 Quickly create new files directly from the command palette or use the keyboard shortcut.
 
-Usage: 
+Usage:
 
-<kbd>cmd</kbd> + <kbd>option/alt</kbd> + <kbd>n</kbd> 
+<kbd>cmd</kbd> + <kbd>option/alt</kbd> + <kbd>n</kbd>
 
 author: [Dominik Kundel](https://marketplace.visualstudio.com/publishers/dkundel)
 
@@ -44,7 +42,6 @@ Open any file and Press <kbd>F1</kbd>, then select `Duplicate File`
 
 Right-click on any file in the sidebar and select `Duplicate File`
 
-
 author: [mrmlnc](https://marketplace.visualstudio.com/publishers/mrmlnc)
 
 source: [Duplicate action - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-duplicate)
@@ -53,7 +50,7 @@ source: [Duplicate action - Visual Studio Marketplace](https://marketplace.visua
 
 ## 3. File Peek
 
-Quickly view contents of linked files and view them in-line in the current document or jump directly to the file and open it in a new editor. 
+Quickly view contents of linked files and view them in-line in the current document or jump directly to the file and open it in a new editor.
 
 Usage:
 
@@ -126,7 +123,7 @@ Easilly wrap your code block with wrapper snippets like "try/catch".
 
 Usage:
 
-- Select the snippet you want to wrap inside a code block, 
+- Select the snippet you want to wrap inside a code block,
 
 - then right-click or press <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>t</kbd>
 
@@ -163,7 +160,7 @@ Converts quotes to backticks when a $ and { are entered within quotes in JavaScr
 
 Usage:
 
-Works automatically, just enter `${}` into any string and the extension will convert the string into a template literal expression. 
+Works automatically, just enter `${}` into any string and the extension will convert the string into a template literal expression.
 
 author: [meganrogge](https://marketplace.visualstudio.com/publishers/meganrogge)
 
