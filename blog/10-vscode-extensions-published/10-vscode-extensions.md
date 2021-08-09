@@ -166,7 +166,7 @@ author: [meganrogge](https://marketplace.visualstudio.com/publishers/meganrogge)
 
 source: [Template String Converter - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=meganrogge.template-string-converter)
 
-![typing a dollar sign then open curly brace within a string converts the quotes to backticks](https://raw.githubusercontent.com/meganrogge/template-string-converter/master/demo.gif)
+![typing a dollar sign then open curly brace within a string converts the quotes to backticks](https://raw.githubusercontent.com/meganrogge/template-string-converter/master/src/images/demo.gif)
 
 ---
 
